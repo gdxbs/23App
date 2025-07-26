@@ -1,57 +1,68 @@
-// app/[restaurantId]/_layout.tsx
 import { Tabs, useLocalSearchParams } from "expo-router";
 import { MaterialCommunityIcons, Fontisto, Ionicons, Entypo } from "@expo/vector-icons";
+import { Colors } from "../../constants/Colors";
 
 export default function TabLayout() {
     const { restaurantId } = useLocalSearchParams();
 
     return (
         <Tabs screenOptions={{
-            tabBarActiveTintColor: "#009BDE",
+            tabBarActiveTintColor: Colors.primary,
+            tabBarInactiveTintColor: Colors.grayDark,
+            tabBarStyle: {
+                backgroundColor: Colors.white,
+                borderTopWidth: 1,
+                borderTopColor: Colors.gray,
+                paddingBottom: 8,
+                paddingTop: 8,
+                height: 80,
+            },
+            tabBarLabelStyle: {
+                fontSize: 12,
+                fontWeight: '600',
+            },
+            headerShown: false,
         }}>
             <Tabs.Screen
                 name="index"
                 options={{
                     title: 'Home',
-                    headerTitle: `Welcome to ${restaurantId}`, // Example of using the restaurantId
-                    headerTintColor: "#009BDE",
-                    tabBarIcon: ({ color }) => <Entypo name="home" size={24} color={color} />
+                    tabBarIcon: ({ color, size }) => <Entypo name="home" size={size} color={color} />
                 }}
             />
-            {/* The rest of your Tab.Screen components remain the same */}
             <Tabs.Screen
                 name="game"
                 options={{
                     title: 'Game',
-                    tabBarIcon: ({ color }) => <Entypo name="game-controller" size={24} color={color} />
+                    tabBarIcon: ({ color, size }) => <Entypo name="game-controller" size={size} color={color} />
                 }}
             />
             <Tabs.Screen
                 name="menu"
                 options={{
                     title: 'Menu',
-                    tabBarIcon: ({ color }) => <Ionicons name="restaurant" size={24} color={color} />
+                    tabBarIcon: ({ color, size }) => <Ionicons name="restaurant" size={size} color={color} />
                 }}
             />
             <Tabs.Screen
                 name="reservations"
                 options={{
                     title: 'Bookings',
-                    tabBarIcon: ({ color }) => <MaterialCommunityIcons name="table-chair" size={24} color={color} />
+                    tabBarIcon: ({ color, size }) => <MaterialCommunityIcons name="table-chair" size={size} color={color} />
                 }}
             />
             <Tabs.Screen
                 name="chat"
                 options={{
                     title: 'AI Service',
-                    tabBarIcon: ({ color }) => <Fontisto name="person" size={24} color={color} />
+                    tabBarIcon: ({ color, size }) => <Fontisto name="person" size={size} color={color} />
                 }}
             />
             <Tabs.Screen
                 name="cart"
                 options={{
                     title: 'Cart',
-                    tabBarIcon: ({ color }) => <Entypo name="shopping-cart" size={24} color={color} />
+                    tabBarIcon: ({ color, size }) => <Entypo name="shopping-cart" size={size} color={color} />
                 }}
             />
         </Tabs>
